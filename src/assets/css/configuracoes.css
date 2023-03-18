@@ -1,0 +1,39 @@
+.configuracoes {
+  padding: 20px 38px;
+}
+.configuracoes .breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.configuracoes .breadcrumbs p {
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.53);
+  font-size: 20px;
+  cursor: pointer;
+}
+.configuracoes .breadcrumbs svg {
+  margin: 0 13px;
+}
+.configuracoes .breadcrumbs .active {
+  color: rgba(0, 0, 0, 0.79);
+}
+.configuracoes .card {
+  width: 369px;
+  height: 187px;
+  border: solid 2px #7007B6;
+  background: rgba(112, 7, 182, 0.6352941176);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.configuracoes .card img {
+  width: 98px;
+}
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #7007B6;
+}/*# sourceMappingURL=configuracoes.css.map */

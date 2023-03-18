@@ -1,0 +1,48 @@
+.configuracoes{
+    padding: 20px 38px;
+    .breadcrumbs{
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+      
+        p{
+          font-weight: 900;
+          color: rgba(0, 0, 0, 0.53);
+          font-size: 20px;
+          cursor: pointer;
+        }
+        svg{
+            margin: 0 13px;
+        }
+        .active{
+            color: rgba(0, 0, 0, 0.79);
+        }
+    }
+    .card{
+        width: 369px;
+        height: 187px;
+        border: solid 2px #7007B6;
+        background: #7007b6a2;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        img{
+            width: 98px;
+        }
+    }
+
+    #googleDrive, #amazonWebService{
+        // display: none;
+    }
+}
+
+
+
+h1{
+    font-size: 30px;
+    font-weight: 700;
+    color: #7007B6;
+}
