@@ -17,16 +17,21 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
 
     <h1>1. Selecione o provedor do serviço</h1>
 
-    <div for="googleDrive" class="card">
-      <p>Google Drive</p>
-      <img src="@/assets/images/Google_Drive_logo.png" alt="" srcset="">
+    <div class="form">
+      <div class="escolha-o-provedor">
+        <div for="googleDrive" class="card">
+          <p>Google Drive</p>
+          <img src="@/assets/images/Google_Drive_logo.png" alt="" srcset="" />
+        </div>
+        <input type="radio" name="googleDrive" id="googleDrive" />
+        <div for="amazonWebService" class="card">
+          <p>Google Drive</p>
+          <img src="@/assets/images/AWS_logo.png" alt="" srcset="" />
+        </div>
+        <input type="radio" name="amazonWebService" id="amazonWebService" />
+      </div>
+      <button class="btn-proximo">PRÓXIMO</button>
     </div>
-    <input type="radio" name="googleDrive" id="googleDrive">
-    <div for="amazonWebService" class="card">
-      <p>Google Drive</p>
-      <img src="@/assets/images/Google_Drive_logo.png" alt="" srcset="">
-    </div>
-    <input type="radio" name="amazonWebService" id="amazonWebService">
   </div>
 </template>
 
