@@ -31,7 +31,7 @@
   margin-right: 40px;
   padding: 28px;
   cursor: pointer;
-  border: solid 4px rgba(255, 255, 255, 0);
+  border: solid 4px #fff;
   transition: 0.2s;
 }
 .configuracoes .card:hover {
@@ -49,18 +49,36 @@
   box-shadow: 0 0 5px rgb(9, 180, 0);
   border-color: greenyellow;
 }
-.configuracoes .escolha-o-provedor {
+.configuracoes .tela-form {
   display: flex;
   padding-top: 20px;
+  flex-direction: column;
 }
-.configuracoes .escolha-o-provedor input {
+.configuracoes .tela-form #radioGoogle, .configuracoes .tela-form #radioAWS {
+  display: none;
+}
+.configuracoes .tela-form .opcoes {
+  display: flex;
+  margin-top: 20px;
+}
+.configuracoes .tela-form .opcoes-conexao {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.configuracoes .tela-form .opcoes-conexao input {
+  width: 316px;
+  height: 56px;
+  padding-left: 12px;
+  margin-bottom: 20px;
+}
+.configuracoes .tela-form.segunda-tela {
   display: none;
 }
 
 .btn-proximo {
   width: 282px;
   height: 73px;
-  background: #7007B6;
   border: none;
   border-radius: 4px;
   font-size: 20px;
@@ -68,10 +86,33 @@
   position: absolute;
   right: 30px;
   bottom: 30px;
-  cursor: pointer;
   transition: 0.2s;
 }
-.btn-proximo:hover {
+.btn-proximo.active {
+  background: #7007B6;
+  cursor: pointer;
+}
+.btn-proximo.active:hover {
+  background: #58068f;
+}
+
+.btn-anterior {
+  width: 282px;
+  height: 73px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  color: #fff;
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  transition: 0.2s;
+}
+.btn-anterior.active {
+  background: #7007B6;
+  cursor: pointer;
+}
+.btn-anterior.active:hover {
   background: #58068f;
 }
 

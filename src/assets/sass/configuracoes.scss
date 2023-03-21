@@ -31,7 +31,7 @@
         margin-right: 40px;
         padding: 28px;
         cursor: pointer;
-        border: solid 4px rgba(255, 255, 255, 0);
+        border: solid 4px #fff;
         transition: 0.2s;
         
         &:hover{
@@ -54,10 +54,29 @@
         }
     }
 
-    .escolha-o-provedor{
+    .tela-form{
         display: flex;
         padding-top: 20px;
-        input{
+        flex-direction: column;
+        #radioGoogle, #radioAWS{
+            display: none;
+        }
+        .opcoes{
+            display: flex;
+            margin-top: 20px;
+        }
+        .opcoes-conexao{
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            input{
+                width: 316px;
+                height: 56px;
+                padding-left: 12px;
+                margin-bottom: 20px;
+            }
+        }
+        &.segunda-tela{
             display: none;
         }
     }
@@ -67,7 +86,6 @@
 .btn-proximo{
     width: 282px;
     height: 73px;
-    background: #7007B6;
     border: none;
     border-radius: 4px;
     font-size: 20px;
@@ -75,11 +93,36 @@
     position: absolute;
     right: 30px;
     bottom: 30px;
-    cursor: pointer;
     transition: 0.2s;
 
-    &:hover{
-        background: #58068f;
+    
+
+    &.active{
+        background: #7007B6;
+        cursor: pointer;
+        &:hover{
+            background: #58068f;
+        }
+    }
+}
+.btn-anterior{
+    width: 282px;
+    height: 73px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    transition: 0.2s;
+
+    &.active{
+        background: #7007B6;
+        cursor: pointer;
+        &:hover{
+            background: #58068f;
+        }
     }
 }
 
