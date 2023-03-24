@@ -1,133 +1,187 @@
-.configuracoes{
-    padding: 20px 38px;
-    .breadcrumbs{
-        display: flex;
-        align-items: center;
-        margin-bottom: 40px;
-      
-        p{
-          font-weight: 900;
-          color: rgba(0, 0, 0, 0.53);
-          font-size: 20px;
-          cursor: pointer;
-        }
-        svg{
-            margin: 0 13px;
-        }
-        .active{
-            color: rgba(0, 0, 0, 0.79);
-        }
-    }
-    .card{
-        width: 369px;
-        height: 187px;
-        border: solid 2px #7007B6;
-        background: #7007b6;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-        margin-right: 40px;
-        padding: 28px;
-        cursor: pointer;
-        border: solid 4px #fff;
-        transition: 0.2s;
-        
-        &:hover{
-            background: #58068f;
-        }
+.configuracoes {
+  padding: 20px 38px;
 
-        img{
-            height: 82px;
-        }
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
 
-        p{
-            font-weight: 600;
-            color: #fff;
-            font-size: 25px;
-        }
-
-        &.active{
-            box-shadow: 0 0 5px rgb(9, 180, 0);
-            border-color: greenyellow;
-        }
+    p {
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.53);
+      font-size: 20px;
+      cursor: pointer;
     }
 
-    .tela-form{
-        display: flex;
-        padding-top: 20px;
-        flex-direction: column;
-        #radioGoogle, #radioAWS{
-            display: none;
-        }
-        .opcoes{
-            display: flex;
-            margin-top: 20px;
-        }
-        .opcoes-conexao{
-            display: flex;
-            flex-direction: column;
-            margin-top: 20px;
-            input{
-                width: 316px;
-                height: 56px;
-                padding-left: 12px;
-                margin-bottom: 20px;
-            }
-        }
-        &.segunda-tela{
-            display: none;
-        }
+    svg {
+      margin: 0 13px;
     }
 
-}
+    .active {
+      color: rgba(0, 0, 0, 0.79);
+    }
+  }
 
-.btn-proximo{
-    width: 282px;
-    height: 73px;
-    border: none;
-    border-radius: 4px;
-    font-size: 20px;
-    color: #fff;
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
+  .card {
+    width: 369px;
+    height: 187px;
+    border: solid 2px #7007B6;
+    background: #7007b6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-right: 40px;
+    padding: 28px;
+    cursor: pointer;
+    border: solid 4px #fff;
     transition: 0.2s;
 
-    
-
-    &.active{
-        background: #7007B6;
-        cursor: pointer;
-        &:hover{
-            background: #58068f;
-        }
+    &:hover {
+      background: #58068f;
     }
-}
-.btn-anterior{
-    width: 282px;
-    height: 73px;
-    border: none;
-    border-radius: 4px;
-    font-size: 20px;
-    color: #fff;
-    position: absolute;
-    left: 30px;
-    bottom: 30px;
-    transition: 0.2s;
 
-    &.active{
-        background: #7007B6;
-        cursor: pointer;
-        &:hover{
-            background: #58068f;
-        }
+    img {
+      height: 82px;
     }
+
+    p {
+      font-weight: 600;
+      color: #fff;
+      font-size: 25px;
+    }
+
+    &.active {
+      box-shadow: 0 0 5px rgb(9, 180, 0);
+      border-color: greenyellow;
+    }
+  }
+
+  .tela-form {
+    display: flex;
+    padding-top: 20px;
+    flex-direction: column;
+
+    #radioGoogle,
+    #radioAWS {
+      display: none;
+    }
+
+    .opcoes {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .opcoes-conexao {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+
+      input {
+        width: 316px;
+        height: 56px;
+        padding-left: 12px;
+        margin-bottom: 20px;
+      }
+    }
+
+    &.segunda-tela {
+      // display: none;
+    }
+  }
+
+  .opcoes-fluxo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 250px);
+    width: 100%;
+    svg{
+      margin-top: -100px;
+    }
+  }
+
+  .opcao {
+    display: flex;
+    width: 250px;
+    height: 250px;
+    position: relative;
+
+    .imagem {
+      position: absolute;
+      background: #7007B6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 100%;
+      transition: 1s;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .imagem:nth-child(2) {
+      padding: 0;
+    }
+
+    .awsimg {
+      top: 127px;
+      right: 0px;
+      width: 80px;
+      height: 80px;
+      transition: 0.2s;
+    }
+
+    .driveimg {
+      top: 0px;
+      left: 50px;
+      width: 150px;
+      height: 150px;
+      transition: 0.2s;
+    }
+  }
+
 }
 
-h1{
-    font-size: 30px;
-    font-weight: 700;
-    color: #7007B6;
+
+
+.btn {
+  width: 282px;
+  height: 73px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  color: #fff;
+  transition: 0.2s;
+
+  &.active {
+    background: #7007B6;
+    cursor: pointer;
+
+    &:hover {
+      background: #58068f;
+    }
+  }
+}
+
+.btn-proximo {
+  position: absolute;
+  right: 38px;
+  bottom: 30px;
+}
+
+.btn-anterior {
+  position: absolute;
+  left: 38px;
+  bottom: 30px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #7007B6;
 }

@@ -16,7 +16,7 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
     </div>
 
     <div class="form">
-      <div class="tela-form" id="escolhaProvedor">
+      <!-- <div class="tela-form" id="escolhaProvedor">
         <h1>1. Selecione o provedor do serviço</h1>
         <div class="opcoes">
           <div @click="escolheGoogle" class="card" id="cardGoogle">
@@ -38,10 +38,36 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
           <input type="password" placeholder="Password" />
           <input type="text" placeholder="URL" />
           <input type="text" placeholder="Chave SSH" />
+          <button class="btn">Finalizar conexão</button>
+        </div>
+      </div> -->
+      <div class="fluxo terceira tela" id="fluxo">
+        <h1>3. Selecione o fluxo das conexões que irão realizar a transferência</h1>
+        <div class="opcoes-fluxo">
+          <div class="opcao">
+            <div @click="fluxoEsqAWS" class="imagem awsimg" id="fluxoEsqAWS">
+              <img src="@/assets/images/AWS_logo.png" alt="Logo AWS" />
+            </div>
+            <div @click="fluxoEsqDrive" class="imagem driveimg" id="fluxoEsqDrive">
+              <img src="@/assets/images/Google_Drive_logo.png" alt="" srcset="" />
+            </div>
+          </div>
+          <svg width="454" height="38" viewBox="0 0 454 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M452.768 20.7531C453.744 19.7768 453.744 18.1939 452.768 17.2176L436.857 1.30819C435.881 0.331913 434.298 0.331965 433.322 1.30831C432.345 2.28465 432.345 3.86756 433.322 4.84384L447.464 18.9855L433.323 33.1281C432.346 34.1045 432.347 35.6874 433.323 36.6636C434.299 37.6399 435.882 37.6399 436.858 36.6635L452.768 20.7531ZM8.09129e-05 21.5L451 21.4854L451 16.4854L-8.09129e-05 16.5L8.09129e-05 21.5Z" fill="#777171"/>
+</svg>
+
+          <div class="opcao">
+            <div @click="fluxoDirAWS" class="imagem awsimg" id="fluxoDirAWS">
+              <img src="@/assets/images/AWS_logo.png" alt="Logo AWS" />
+            </div>
+            <div @click="fluxoDirDrive" class="imagem driveimg" id="fluxoDirDrive">
+              <img src="@/assets/images/Google_Drive_logo.png" alt="" srcset="" />
+            </div>
+          </div>
         </div>
       </div>
-      <button @click="anterior" class="btn-anterior" id="btnAnterior">ANTERIOR</button>
-      <button @click="proximo" class="btn-proximo" id="btnProximo">PRÓXIMO</button>
+      <button @click="anterior" class="btn btn-anterior" id="btnAnterior">ANTERIOR</button>
+      <button @click="proximo" class="btn btn-proximo" id="btnProximo">PRÓXIMO</button>
     </div>
   </div>
 </template>
@@ -100,6 +126,70 @@ export default {
       telaConexao.style.display = 'none'
       btnProximo.classList.add('active')
       btnAnterior.classList.remove('active')
+    },
+    fluxoEsqDrive: () => {
+      let aws = document.getElementById('fluxoEsqAWS')
+      let drive = document.getElementById('fluxoEsqDrive')
+
+      aws.style = `top: 127px;
+                   right: 0px;
+                   width: 80px;
+                   height: 80px;
+                   transition: 0.2s;`
+      
+      drive.style = `top: 0px;
+                     left: 50px;
+                     width: 150px;
+                     height: 150px;
+                     transition: 0.2s;`
+    },
+    fluxoEsqAWS: () => {
+      let aws = document.getElementById('fluxoEsqAWS')
+      let drive = document.getElementById('fluxoEsqDrive')
+
+      aws.style = `top: 0px;
+                   right: 50px;
+                   width: 150px;
+                   height: 150px;
+                   transition: 0.2s;`
+      
+      drive.style = `top: 127px;
+                     left: 0px;
+                     width: 80px;
+                     height: 80px;
+                     transition: 0.2s;`
+    },
+    fluxoDirDrive: () => {
+      let aws = document.getElementById('fluxoDirAWS')
+      let drive = document.getElementById('fluxoDirDrive')
+
+      aws.style = `top: 127px;
+                   right: 0px;
+                   width: 80px;
+                   height: 80px;
+                   transition: 0.2s;`
+      
+      drive.style = `top: 0px;
+                     left: 50px;
+                     width: 150px;
+                     height: 150px;
+                     transition: 0.2s;`
+    },
+    fluxoDirAWS: () => {
+      let aws = document.getElementById('fluxoDirAWS')
+      let drive = document.getElementById('fluxoDirDrive')
+
+      aws.style = `top: 0px;
+                   right: 50px;
+                   width: 150px;
+                   height: 150px;
+                   transition: 0.2s;`
+      
+      drive.style = `top: 127px;
+                     left: 0px;
+                     width: 80px;
+                     height: 80px;
+                     transition: 0.2s;`
     }
   }
 }
