@@ -83,6 +83,9 @@
 .configuracoes .opcoes-fluxo svg {
   margin-top: -100px;
 }
+.configuracoes .fluxo input {
+  display: none;
+}
 .configuracoes .opcao {
   display: flex;
   width: 250px;
