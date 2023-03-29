@@ -73,6 +73,9 @@
   padding-left: 12px;
   margin-bottom: 20px;
 }
+.configuracoes .tela-form.segunda-tela {
+  display: none;
+}
 .configuracoes .opcoes-fluxo {
   display: flex;
   justify-content: center;
@@ -157,4 +160,8 @@ h1 {
   font-size: 30px;
   font-weight: 700;
   color: #7007B6;
+}
+
+.terceira-tela {
+  display: none;
 }/*# sourceMappingURL=configuracoes.css.map */

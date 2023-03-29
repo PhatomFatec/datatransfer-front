@@ -5,7 +5,7 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
 
 <template>
   <div class="configuracoes">
-    <div class="breadcrumbs">
+    <!-- <div class="breadcrumbs">
       <p class="active">ESCOLHA O PROVEDOR</p>
       <BreadcrumbArrow />
       <p>CONFIGURAÇÕES DA CONEXÃO</p>
@@ -13,10 +13,10 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
       <p>FLUXO</p>
       <BreadcrumbArrow />
       <p>DIRETÓRIOS E CRIAÇÃO</p>
-    </div>
+    </div> -->
 
     <div class="form">
-      <!-- <div class="tela-form" id="escolhaProvedor">
+      <div class="tela-form" id="escolhaProvedor">
         <h1>1. Selecione o provedor do serviço</h1>
         <div class="opcoes">
           <div @click="escolheGoogle" class="card" id="cardGoogle">
@@ -34,16 +34,27 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
       <div class="tela-form segunda-tela" id="configuraConexao">
         <h1>2. Preencha os campos para criar a conexão o provedor escolhido:</h1>
         <div class="opcoes-conexao">
-          <input type="text" placeholder="Host" />
-          <input type="password" placeholder="Password" />
-          <input type="text" placeholder="URL" />
-          <input type="text" placeholder="Chave SSH" />
-          <button class="btn">Finalizar conexão</button>
+          <input id="i1" @change="proximo" type="text" placeholder="Host" />
+          <input id="i2" @change="proximo" type="password" placeholder="Password" />
+          <input id="i3" @change="proximo" type="text" placeholder="URL" />
+          <input id="i4" @change="proximo" type="text" placeholder="Chave SSH" />
+          <!-- <button class="btn">Finalizar conexão</button> -->
         </div>
-      </div> -->
-      <div class="fluxo terceira tela" id="fluxo">
+      </div>
+
+      <div class="fluxo terceira-tela" id="fluxo">
         <h1>3. Selecione o fluxo das conexões que irão realizar a transferência</h1>
-        <div class="opcoes-fluxo">
+        <div class="homeoptions">
+          <select name="pastas" id="pastas">
+            <option value=""></option>
+            <option value="">teste</option>
+            <option value="">teste</option>
+            <option value="">teste</option>
+            <option value="">teste</option>
+          </select>
+          <button>Enviar</button>
+        </div>
+        <!-- <div class="opcoes-fluxo">
           <div class="opcao">
             <div @click="fluxoEsqAWS" class="imagem awsimg" id="fluxoEsqAWS">
               <img src="@/assets/images/AWS_logo.png" alt="Logo AWS" />
@@ -74,14 +85,14 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
               <img src="@/assets/images/Google_Drive_logo.png" alt="" srcset="" />
             </div>
           </div>
-        </div>
-        <input type="radio" id="fromDrive" checked>
-        <input type="radio" id="fromAWS">
-        <input type="radio" id="toDrive" checked>
-        <input type="radio" id="toAWS">
+        </div> -->
+        <input type="radio" id="fromDrive" checked />
+        <input type="radio" id="fromAWS" />
+        <input type="radio" id="toDrive" checked />
+        <input type="radio" id="toAWS" />
       </div>
       <button @click="anterior" class="btn btn-anterior" id="btnAnterior">ANTERIOR</button>
-      <button @click="proximo" class="btn btn-proximo" id="btnProximo">PRÓXIMO</button>
+      <button @click="proximo('a')" class="btn btn-proximo" id="btnProximo">PRÓXIMO</button>
     </div>
   </div>
 </template>
@@ -115,19 +126,47 @@ export default {
       radioAWS.checked = true
       btnProximo.classList.add('active')
     },
-    proximo: () => {
+    proximo: (a) => {
       var radioGoogle = document.getElementById('radioGoogle').checked
       var radioAWS = document.getElementById('radioAWS').checked
       var telaProvedor = document.getElementById('escolhaProvedor')
       var telaConexao = document.getElementById('configuraConexao')
       var btnProximo = document.getElementById('btnProximo')
       var btnAnterior = document.getElementById('btnAnterior')
+      let terceiraTela = document.querySelector('.terceira-tela')
+      let i1 = document.querySelector('#i1').value.trim()
+      let i2 = document.querySelector('#i2').value.trim()
+      let i3 = document.querySelector('#i3').value.trim()
+      let i4 = document.querySelector('#i4').value.trim()
 
       if (radioGoogle || radioAWS) {
-        telaProvedor.style.display = 'none'
-        telaConexao.style.display = 'flex'
-        btnProximo.classList.remove('active')
-        btnAnterior.classList.add('active')
+        if (telaProvedor.style.display != 'none') {
+          telaConexao.style.display = 'flex'
+          telaProvedor.style.display = 'none'
+          btnProximo.classList.remove('active')
+          btnAnterior.classList.add('active')
+        } else if (
+          telaConexao.style.display != 'none' &&
+          i1 != '' &&
+          i2 != '' &&
+          i3 != '' &&
+          i4 != ''
+        ) {
+          btnProximo.classList.add('active')
+          if (a == 'a') {
+            telaConexao.style.display = 'none'
+            terceiraTela.style.display = 'flex'
+            btnProximo.classList.remove('active')
+          }
+        }
+        else {
+          btnProximo.classList.remove('active')
+        }
+
+        // telaProvedor = 'none'
+        // telaConexao = 'flex'
+        // btnProximo.classList.remove('active')
+        // btnAnterior.classList.add('active')
       }
     },
     anterior: () => {
@@ -135,11 +174,24 @@ export default {
       var telaConexao = document.getElementById('configuraConexao')
       var btnProximo = document.getElementById('btnProximo')
       var btnAnterior = document.getElementById('btnAnterior')
+      let terceiraTela = document.querySelector('.terceira-tela')
+      
 
-      telaProvedor.style.display = 'flex'
-      telaConexao.style.display = 'none'
-      btnProximo.classList.add('active')
-      btnAnterior.classList.remove('active')
+      if (telaConexao.style.display != 'none'){
+        telaProvedor.style.display = 'flex'
+        telaConexao.style.display = 'none'
+        btnProximo.classList.add('active')
+        btnAnterior.classList.remove('active')
+      } else if (terceiraTela.style.display != 'none'){
+        telaConexao.style.display = 'flex'
+        terceiraTela.style.display = 'none'
+        btnProximo.classList.add('active')
+      }
+
+      // telaProvedor.style.display = 'flex'
+      // telaConexao.style.display = 'none'
+      // btnProximo.classList.add('active')
+      // btnAnterior.classList.remove('active')
     },
     fluxoEsqDrive: () => {
       let aws = document.getElementById('fluxoEsqAWS')
@@ -231,4 +283,5 @@ export default {
 
 <style>
 @import '@/assets/css/configuracoes.css';
+@import '@/assets/css/home.css';
 </style>

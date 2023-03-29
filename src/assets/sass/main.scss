@@ -7,17 +7,17 @@
 }
 nav{
     background: #6E07B2;
-    height: 83px;
+    height: 35px;
     display: flex;
     align-items: flex-end;
     padding-left: 38px;
     a{
         color: #fff;
-        padding: 16px 46px;
+        padding: 5px 20px;
         text-decoration: none;
-        border-top-right-radius: 12px;
-        border-top-left-radius: 12px;
-        font-size: 30px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        font-size: 18px;
         font-weight: bold;
 
         &.router-link-active{

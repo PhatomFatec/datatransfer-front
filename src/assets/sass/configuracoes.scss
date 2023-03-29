@@ -87,8 +87,9 @@
     }
 
     &.segunda-tela {
-      // display: none;
+      display: none;
     }
+    
   }
 
   .opcoes-fluxo{
@@ -190,4 +191,8 @@ h1 {
   font-size: 30px;
   font-weight: 700;
   color: #7007B6;
+}
+
+.terceira-tela{
+  display: none;
 }
