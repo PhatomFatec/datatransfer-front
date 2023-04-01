@@ -47,12 +47,10 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
         <div class="homeoptions">
           <select name="pastas" id="pastas">
             <option value=""></option>
-            <option value="">teste</option>
-            <option value="">teste</option>
-            <option value="">teste</option>
-            <option value="">teste</option>
           </select>
           <button>Enviar</button>
+          <input type="file" name="file" id="file" />
+          <button @click="enviaArquivo">envia essa merda logo</button>
         </div>
         <!-- <div class="opcoes-fluxo">
           <div class="opcao">
@@ -98,7 +96,19 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
 </template>
 
 <script>
+import { reactive } from 'vue'
+
 export default {
+  setup() {
+    const pastas = reactive({
+      pasta: [],
+    });
+
+    return {
+      pastas,
+    };
+  },
+
   methods: {
     escolheGoogle: () => {
       var cardGoogle = document.getElementById('cardGoogle')
@@ -157,9 +167,22 @@ export default {
             telaConexao.style.display = 'none'
             terceiraTela.style.display = 'flex'
             btnProximo.classList.remove('active')
+
+            var myHeaders = new Headers()
+            myHeaders.append('Content-Type', 'application/json')
+
+            var requestOptions = {
+              method: 'GET',
+              headers: myHeaders,
+              redirect: 'follow'
+            }
+
+            fetch('http://localhost:8081/folders', requestOptions)
+              .then((response) => response.text())
+              .then((result) => (this.pastas = result))
+              .catch((error) => console.log('error', error))
           }
-        }
-        else {
+        } else {
           btnProximo.classList.remove('active')
         }
 
@@ -167,6 +190,7 @@ export default {
         // telaConexao = 'flex'
         // btnProximo.classList.remove('active')
         // btnAnterior.classList.add('active')
+        console.log(this.$root.$options.meuValorGlobal)
       }
     },
     anterior: () => {
@@ -175,14 +199,13 @@ export default {
       var btnProximo = document.getElementById('btnProximo')
       var btnAnterior = document.getElementById('btnAnterior')
       let terceiraTela = document.querySelector('.terceira-tela')
-      
 
-      if (telaConexao.style.display != 'none'){
+      if (telaConexao.style.display != 'none') {
         telaProvedor.style.display = 'flex'
         telaConexao.style.display = 'none'
         btnProximo.classList.add('active')
         btnAnterior.classList.remove('active')
-      } else if (terceiraTela.style.display != 'none'){
+      } else if (terceiraTela.style.display != 'none') {
         telaConexao.style.display = 'flex'
         terceiraTela.style.display = 'none'
         btnProximo.classList.add('active')
@@ -276,6 +299,18 @@ export default {
                      width: 80px;
                      height: 80px;
                      transition: 0.2s;`
+    },
+    enviaArquivo: () => {
+      var input = document.querySelector('input[type="file"]')
+
+      var data = new FormData()
+      data.append('file', input.files[0])
+      data.append('user', 'hubot')
+
+      fetch('http://localhost:8081/upload', {
+        method: 'POST',
+        body: data
+      })
     }
   }
 }
