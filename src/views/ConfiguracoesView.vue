@@ -14,8 +14,8 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
         <input type="text" placeholder="client_secret" />
         <label for="">Project ID</label>
         <input type="text" placeholder="project_id" />
-        <label for="">Redirect URL</label>
-        <input type="text" placeholder="redirect_url" />
+        <label for="">Redirect URI</label>
+        <input type="text" placeholder="redirect_uri" />
       </div>
       <button>Gerar</button>
     </div>
