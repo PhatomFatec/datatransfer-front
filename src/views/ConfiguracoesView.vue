@@ -9,13 +9,13 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
       <h1>CREDENCIAIS</h1>
       <div class="fields">
         <label for="">Client ID</label>
-        <input type="text" placeholder="client_id" />
+        <input type="text" placeholder="client_id" id="client_id"/>
         <label for="">Client Secret</label>
-        <input type="text" placeholder="client_secret" />
+        <input type="text" placeholder="client_secret" id="client_secret"/>
         <label for="">Project ID</label>
-        <input type="text" placeholder="project_id" />
-        <label for="">Redirect URI</label>
-        <input type="text" placeholder="redirect_uri" />
+        <input type="text" placeholder="project_id"  id="project_id"/>
+        <label for="">Redirect URIS</label>
+        <input type="text" placeholder="redirect_uris" id="redirect_uris"/>
       </div>
       <button>Gerar</button>
     </div>
@@ -117,8 +117,7 @@ export default {
       fetch('http://localhost:8081/upload', {
         method: 'POST',
         body: data
-      })
-        .then(alert('Arquivo enviado'))
+      }).then(alert('Arquivo enviado'))
     }
 
     return {
@@ -154,6 +153,33 @@ export default {
       let dropInputLabel = document.querySelector('.drop-input-label')
       this.$refs.fileInput.click()
       dropInputLabel.innerHTML = files[0].name
+    },
+
+    sendCredentials() {
+      const client_id = document.querySelector('#client_id').value
+      const client_secret = document.querySelector('#client_secret').value
+      const project_id = document.querySelector('#project_id').value
+      const redirect_uris = document.querySelector('#redirect_uris').value
+      var myHeaders = new Headers()
+      myHeaders.append('Content-Type', 'application/json')
+
+      var raw = JSON.stringify({
+        client_id: client_id,
+        client_secret: client_secret,
+        project_id: project_id,
+        redirect_uris: redirect_uris
+      })
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      }
+
+      fetch('http://localhost:8081/folders/select', requestOptions)
+        .then((response) => response.text())
+        .catch((error) => console.log('error', error))
     }
   },
 
