@@ -177,7 +177,7 @@ export default {
         redirect: 'follow'
       }
 
-      fetch('http://localhost:8081/folders/select', requestOptions)
+      fetch('http://localhost:8081/credentials', requestOptions)
         .then((response) => response.text())
         .catch((error) => console.log('error', error))
     }
