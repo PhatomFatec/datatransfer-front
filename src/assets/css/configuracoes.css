@@ -1,0 +1,82 @@
+.configuracoes {
+  padding: 40px 40px;
+  display: flex;
+  height: calc(100vh - 35px);
+}
+.configuracoes .credentials-generator {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+}
+.configuracoes .credentials-generator h1 {
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+}
+.configuracoes .credentials-generator .fields {
+  display: flex;
+  flex-direction: column;
+}
+.configuracoes .credentials-generator .fields input {
+  background: rgb(244, 244, 244);
+  border: none;
+  outline: none;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+.configuracoes .file {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 50%;
+  padding: 0 50px;
+}
+.configuracoes .file .choose-folder {
+  margin-top: 76px;
+}
+.configuracoes .file .choose-folder select {
+  background: rgb(244, 244, 244);
+  border: none;
+  outline: none;
+  padding: 5px 20px;
+  height: 40px;
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+.configuracoes .file .send-file .file-input {
+  border: 2px dashed #ccc;
+  padding: 87.5px;
+  text-align: center;
+  margin: 38px 0 21px 0;
+}
+.configuracoes .file .send-file .file-input.is-dragover {
+  background-color: #f0f0f0;
+}
+.configuracoes .file .send-file .file-input__input {
+  display: none;
+}
+.configuracoes button {
+  background: #6E07B2;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: large;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 100%;
+}
+.configuracoes button:hover {
+  background: rgba(110, 7, 178, 0.737254902);
+}/*# sourceMappingURL=configuracoes.css.map */
