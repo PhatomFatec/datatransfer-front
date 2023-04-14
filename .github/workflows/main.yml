@@ -1,19 +1,22 @@
-on: 
+name: Netlify Deploy
+on:
   push:
     branches:
-      - develop
-name: 🚀 Deploy website on push
+      - main
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v3
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ${{ secrets.ftp_host }}
-        username: ${{ secrets.ftp_user }}
-        password: ${{ secrets.ftp_password }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.3.0
+        with:
+          publish-dir: ./build
+          deploy-message: "Deployed on ${{ github.sha }}"
+          production-branch: main
+          access-token: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
