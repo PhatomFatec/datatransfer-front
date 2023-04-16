@@ -1,23 +1,37 @@
-name: Netlify Deploy
+name: DemoNewCD
 on:
-  push:
-    branches:
-      - main
-      - develop
+  workflow_dispatch:
+  
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v2
-        with:
-          publish-dir: ./build
-          deploy-message: "Deployed on ${{ github.sha }}"
-          production-branch: main
-          access-token: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+      - name: Run a one-line script
+        run: echo Hello, world!
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+      url: 'https://dev-datatransfer.netlify.app/'
+    needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy DEV
+  deploy-hmg:
+    runs-on: ubuntu-latest
+    environment:
+      name: hmg
+      url: 'https://dev-datatransfer.netlify.app/'
+    needs: deploy-dev
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy HMG
+  deploy-prd:
+    runs-on: ubuntu-latest
+    environment:
+      name: prd
+      url: 'https://dev-datatransfer.netlify.app/'
+    needs: deploy-hmg
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy PRD
