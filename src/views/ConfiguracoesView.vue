@@ -5,17 +5,18 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
 
 <template>
   <div class="configuracoes">
+    <Message msg="Credencial cadastrada com sucesso" />
     <div class="credentials-generator">
       <h1>CREDENCIAIS</h1>
       <div class="fields">
         <label for="">Client ID</label>
-        <input type="text" placeholder="client_id" id="client_id"/>
+        <input type="text" placeholder="client_id" id="client_id" />
         <label for="">Client Secret</label>
-        <input type="text" placeholder="client_secret" id="client_secret"/>
+        <input type="text" placeholder="client_secret" id="client_secret" />
         <label for="">Project ID</label>
-        <input type="text" placeholder="project_id"  id="project_id"/>
+        <input type="text" placeholder="project_id" id="project_id" />
         <label for="">Redirect URIS</label>
-        <input type="text" placeholder="redirect_uris" id="redirect_uris"/>
+        <input type="text" placeholder="redirect_uris" id="redirect_uris" />
       </div>
       <button @click="sendCredentials">Gerar</button>
     </div>
@@ -53,6 +54,7 @@ import BreadcrumbArrow from '/src/components/icons/BreadcrumbArrow.vue'
 
 <script>
 import { reactive } from 'vue'
+import Message from '../components/Message.vue'
 
 export default {
   data() {
@@ -172,19 +174,58 @@ export default {
       }
 
       fetch('http://localhost:8081/credentials', requestOptions)
-        .then((response) => response.text())
-        .then(alert('Credencial gerada'))
-        .catch((error) => console.log('error', error))
-      
+        .then((response) => {
+          response.text()
+          this.notifyOk()
+          })
+        .catch((error) => {
+          console.log('error', error)
+          this.notifyNotOk()
+          })
+
       client_id = ''
       client_secret = ''
       project_id = ''
       redirect_uris = ''
+    },
+
+    notifyOk() {
+      let toast = document.querySelector('.message-container')
+      let loading = document.querySelector('.loading')
+      toast.style.right = '20px'
+      setTimeout(() => {
+        loading.style.width = '0px'
+      }, '1000')
+      setTimeout(() => {
+        toast.style.right = '-315px'
+      }, '4000')
+      setTimeout(() => {
+        loading.style.width = '312px'
+      }, '5000')
+    },
+
+    notifyNotOk() {
+      let toast = document.querySelector('.message-container-error')
+      let loading = document.querySelector('.loading-error')
+      toast.style.right = '20px'
+      setTimeout(() => {
+        loading.style.width = '0px'
+      }, '1000')
+      setTimeout(() => {
+        toast.style.right = '-315px'
+      }, '4000')
+      setTimeout(() => {
+        loading.style.width = '312px'
+      }, '5000')
     }
   },
 
   mounted() {
     this.getPastas()
+  },
+
+  components: {
+    Message
   }
 }
 </script>
