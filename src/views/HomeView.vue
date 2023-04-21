@@ -5,6 +5,7 @@ import TheWelcome from '../components/DashboardComponent.vue'
 <template>
   <main style="width: 100%; height: calc(100vh - 35px); display: flex; justify-content: center; align-items: center;">
     <!-- <img src="src/assets/images/loading-gif.gif" alt="" srcset="" style="width:50px"> -->
+    teste2
   </main>
 </template>
 
