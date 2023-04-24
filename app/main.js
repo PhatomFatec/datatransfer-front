@@ -121,58 +121,9 @@ function notifyNotOk() {
   }, '5000')
 }
 
-let pastas
-
-function getPastas() {
-  let select = document.querySelector('select')
-  select.innerHTML = ''
-  var myHeaders = new Headers()
-  myHeaders.append('Content-Type', 'application/json')
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  }
-  fetch('http://localhost:8081/folders', requestOptions)
-    .then((response) => response.text())
-    .then((results) => {
-      pastas = JSON.parse(results)
-      pastas.forEach(pasta => {
-        select.innerHTML += `<option>${pasta.nome}</option>`
-      })
-    })
-    .catch((error) => console.log('error', error))
-
-
-}
-
 function sendFile() {
-  const folderName = document.querySelector('select').value
-  let folderCode = ''
-  pastas.forEach((element) => {
-    if (folderName == element.nome) {
-      folderCode = element.codigo
-    }
-  })
-
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
-
-  var raw = JSON.stringify({
-    codigo: folderCode,
-    nome: folderName
-  })
-
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow'
-  }
-
-  fetch('http://localhost:8081/folders/select', requestOptions)
-    .then((response) => response.text())
-    .catch((error) => console.log('error', error))
 
   var input = document.querySelector('input[type="file"]')
   var data = new FormData()
