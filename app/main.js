@@ -4,6 +4,7 @@ let configuration = document.querySelector('.configuration')
 let menuHome = document.querySelector('.menu-home')
 let menuHistory = document.querySelector('.menu-history')
 let menuConfiguration = document.querySelector('.menu-configuration')
+let historyList = []
 
 function toConfig() {
   let home = document.querySelector('.home')
@@ -51,6 +52,7 @@ function toHistory() {
   menuHome.classList.remove('active')
   menuHistory.classList.add('active')
   menuConfiguration.classList.remove('active')
+  getHistory()
 }
 
 function sendCredentials() {
@@ -184,6 +186,26 @@ window.onload = function onload() {
       fileList.appendChild(li);
     }
   });
+}
+
+function getHistory() {
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  
+  fetch("http://localhost:8081/history", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      historyList = JSON.parse(result)
+      // console.log(historyList)
+      let tabela = document.querySelector('table')
+      tabela.innerHTML = '<tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr>'
+      historyList.forEach(e => {
+        tabela.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
+      })
+    })
+    .catch(error => console.log('error', error));
 }
 
 module.exports = { toConfig, toHome, toHistory, notifyOk };
