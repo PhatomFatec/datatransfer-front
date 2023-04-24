@@ -38,6 +38,13 @@ function toHome() {
 }
 
 function toHistory() {
+  let home = document.querySelector('.home')
+  let history = document.querySelector('.history')
+  let configuration = document.querySelector('.configuration')
+  let menuHome = document.querySelector('.menu-home')
+  let menuHistory = document.querySelector('.menu-history')
+  let menuConfiguration = document.querySelector('.menu-configuration')
+
   home.style.display = 'none'
   history.style.display = 'flex'
   configuration.style.display = 'none'
@@ -228,4 +235,4 @@ window.onload = function onload() {
   });
 }
 
-module.exports = { toConfig, toHome };
+module.exports = { toConfig, toHome, toHistory, notifyOk };
