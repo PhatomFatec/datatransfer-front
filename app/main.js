@@ -6,6 +6,13 @@ let menuHistory = document.querySelector('.menu-history')
 let menuConfiguration = document.querySelector('.menu-configuration')
 
 function toConfig() {
+  let home = document.querySelector('.home')
+  let history = document.querySelector('.history')
+  let configuration = document.querySelector('.configuration')
+  let menuHome = document.querySelector('.menu-home')
+  let menuHistory = document.querySelector('.menu-history')
+  let menuConfiguration = document.querySelector('.menu-configuration')
+
   home.style.display = 'none'
   history.style.display = 'none'
   configuration.style.display = 'flex'
@@ -15,6 +22,13 @@ function toConfig() {
 }
 
 function toHome() {
+  let home = document.querySelector('.home')
+  let history = document.querySelector('.history')
+  let configuration = document.querySelector('.configuration')
+  let menuHome = document.querySelector('.menu-home')
+  let menuHistory = document.querySelector('.menu-history')
+  let menuConfiguration = document.querySelector('.menu-configuration')
+  
   home.style.display = 'flex'
   history.style.display = 'none'
   configuration.style.display = 'none'
@@ -102,7 +116,9 @@ function notifyNotOk() {
 
 let pastas
 
-window.onload = function getPastas() {
+function getPastas() {
+  let select = document.querySelector('select')
+  select.innerHTML = ''
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
   var requestOptions = {
@@ -112,12 +128,15 @@ window.onload = function getPastas() {
   }
   fetch('http://localhost:8081/folders', requestOptions)
     .then((response) => response.text())
-    .then((results) => (pastas = JSON.parse(results)))
+    .then((results) => {
+      pastas = JSON.parse(results)
+      pastas.forEach(pasta => {
+        select.innerHTML += `<option>${pasta.nome}</option>`
+      })
+    })
     .catch((error) => console.log('error', error))
 
-  pastas.forEach(pasta => {
-    document.querySelector('select').innerHTML = `<option>${pasta.nome}</option>`
-  })
+
 }
 
 function sendFile() {
@@ -166,37 +185,47 @@ function sendFile() {
     })
 }
 
-const fileInput = document.getElementById('file-input');
-const fileList = document.getElementById('file-list');
 
-fileInput.addEventListener('change', (event) => {
-  fileList.innerHTML = '';
-  const files = event.target.files;
-  for (let i = 0; i < files.length; i++) {
-    const li = document.createElement('li');
-    li.innerHTML = files[i].name;
-    fileList.appendChild(li);
-  }
-});
 
-fileInput.addEventListener('dragover', (event) => {
-  event.preventDefault();
-  fileInput.classList.add('drag-over');
-});
+window.onload = function onload() {
+  const fileInput = document.getElementById('file-input');
+  const fileList = document.getElementById('file-list');
+  let textInput = document.querySelector('.text-input')
 
-fileInput.addEventListener('dragleave', (event) => {
-  event.preventDefault();
-  fileInput.classList.remove('drag-over');
-});
+  fileInput.addEventListener('change', (event) => {
+    fileList.innerHTML = '';
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const li = document.createElement('li');
+      li.innerHTML = files[i].name;
+      fileList.appendChild(li);
+      textInput.innerHTML = files[0].name
+      textInput.style.color = '#00c723'
+      document.querySelector('.file-input-label').style.borderColor = '#00c723'
+    }
+  });
 
-fileInput.addEventListener('drop', (event) => {
-  event.preventDefault();
-  fileInput.classList.remove('drag-over');
-  fileList.innerHTML = '';
-  const files = event.dataTransfer.files;
-  for (let i = 0; i < files.length; i++) {
-    const li = document.createElement('li');
-    li.innerHTML = files[i].name;
-    fileList.appendChild(li);
-  }
-});
+  fileInput.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    fileInput.classList.add('drag-over');
+  });
+
+  fileInput.addEventListener('dragleave', (event) => {
+    event.preventDefault();
+    fileInput.classList.remove('drag-over');
+  });
+
+  fileInput.addEventListener('drop', (event) => {
+    event.preventDefault();
+    fileInput.classList.remove('drag-over');
+    fileList.innerHTML = '';
+    const files = event.dataTransfer.files;
+    for (let i = 0; i < files.length; i++) {
+      const li = document.createElement('li');
+      li.innerHTML = files[i].name;
+      fileList.appendChild(li);
+    }
+  });
+}
+
+module.exports = { toConfig, toHome };

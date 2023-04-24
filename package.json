@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "dependencies": {
+    "jquery": "^3.6.4",
+    "socket.io": "^4.6.1"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}
