@@ -1,0 +1,15 @@
+name: Testes Unitários de Front-end
+
+on: 
+  push # gatilho para executar o fluxo quando houver um push para o repositório
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # ambiente de execução para o trabalho
+    
+    steps:
+    - uses: actions/checkout@v2 # usa a ação checkout para obter o código-fonte do repositório
+    - name: Install Dependencies # instala as dependências necessárias para executar os testes
+      run: npm install
+    - name: Run Tests # executa os testes usando o comando 'npm run test'
+      run: npm run test
