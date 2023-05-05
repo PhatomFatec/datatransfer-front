@@ -43,7 +43,7 @@ nav .active {
 }
 
 .configuration {
-    display: none;
+    display: flex;
     padding: 50px;
 }
 
@@ -263,3 +263,6 @@ table {
     background-color: #f9f9f9;
   }
   
+  .currentPage{
+    height: calc(100vh - 35px);
+  }

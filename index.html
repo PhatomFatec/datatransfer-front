@@ -7,59 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Transfer</title>
   <link rel="stylesheet" href="./style/main.css">
-  <link rel="icon" type="image/png" href="./assets/favicon.ico"/>
+  <link rel="icon" type="image/png" href="./assets/favicon.ico" />
 </head>
 
 <body>
-  <div class="message-container">
-    <p>Operação bem sucedida</p>
-    <div class="loading"></div>
-  </div>
-  <div class="message-container-error">
-    <p>Ocorreu um erro</p>
-    <div class="loading-error"></div>
-  </div>
-  <nav>
-    <p class="menu-home active" onclick="toHome()">Home</p>
-    <p class="menu-configuration" onclick="toConfig()">Configurações</p>
-    <p class="menu-history" onclick="toHistory()">Histórico</p>
-  </nav>
-  <div class="home">
-    <iframe title="Report Section" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiY2QxOWU3N2EtYzQ5Ny00OTAwLWJkNTEtZjk3MTkzMGZjN2NjIiwidCI6ImRkNDg5YTlkLTU4Y2EtNGI3Ny1iM2RkLWQ5MzYyZGJkMjdlZCJ9" frameborder="0" allowFullScreen="true"></iframe>
-  </div>
-  <div class="configuration">
-    <div class="half">
-      <h1>CREDENCIAIS</h1>
-      <div class="form">
-        <label>Client ID</label>
-        <input type="text" name="" id="client_id" placeholder="client_id">
-        <label>Client Secret</label>
-        <input type="text" name="" id="client_secret" placeholder="client_secret">
-        <label>Project ID</label>
-        <input type="text" name="" id="project_id" placeholder="project_id">
-        <label>Redirect URIS</label>
-        <input type="text" name="" id="redirect_uris" placeholder="redirect_uris">
-        <button onclick="sendCredentials()">Gerar</button>
-      </div>
+  <div class="fixed">
+    <div class="message-container">
+      <p>Operação bem sucedida</p>
+      <div class="loading"></div>
     </div>
-    <div class="half">
-      <div class="file-input-container">
-        <input type="file" id="file-input" multiple>
-        <label for="file-input" class="file-input-label">
-          <i class="fas fa-cloud-upload-alt"></i>
-          <span class="text-input">Arraste e solte os arquivos aqui ou clique para selecionar</span>
-        </label>
-        <div id="file-list"></div>
-        <button onclick="sendFile()">Enviar</button>
-      </div>
-  </div>
+    <div class="message-container-error">
+      <p>Ocorreu um erro</p>
+      <div class="loading-error"></div>
     </div>
+    <nav>
+      <p class="menu-home active" onclick="toHome()">Home</p>
+      <p class="menu-configuration" onclick="toConfig()">Configurações</p>
+      <p class="menu-history" onclick="toHistory()">Histórico</p>
+    </nav>
   </div>
-  <div class="history">
-    <table></table>
-  </div>
-    
+  <div class="currentPage"></div>
+  
+
   <script src="./app/main.js"></script>
+  <script src="./app/pages.js"></script>
 </body>
 
 </html>
