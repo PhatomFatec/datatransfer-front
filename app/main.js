@@ -66,6 +66,10 @@ function sendCredentials() {
   let redirect_uris = document.querySelector('#redirect_uris').value
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
+  document.querySelector('#b1').style.display = "none"
+  document.querySelector('#gif1').style.display = "block"
+  document.querySelector('#bt1').disabled = true
+  document.querySelector('#bt1').style.background = 'gray'
 
   var raw = JSON.stringify({
     client_id: client_id,
@@ -85,10 +89,18 @@ function sendCredentials() {
     .then((response) => {
       response.text()
       notifyOk()
+      document.querySelector('#b1').style.display = "block"
+      document.querySelector('#gif1').style.display = "none"
+      document.querySelector('#bt1').disabled = false
+      document.querySelector('#bt1').style.background = '#6E07B2'
     })
     .catch((error) => {
       console.log('error', error)
       notifyNotOk()
+      document.querySelector('#b1').style.display = "block"
+      document.querySelector('#gif1').style.display = "none"
+      document.querySelector('#bt1').disabled = false
+      document.querySelector('#bt1').style.background = '#6E07B2'
     })
 
   document.querySelector('#client_id').value = ''
@@ -128,6 +140,11 @@ function notifyNotOk() {
 }
 
 function sendFile() {
+  document.querySelector('#b3').style.display = "none"
+  document.querySelector('#gif3').style.display = "block"
+  document.querySelector('#bt3').disabled = true
+  document.querySelector('#bt3').style.background = 'gray'
+
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
 
@@ -142,10 +159,18 @@ function sendFile() {
     .then((response) => {
       response.text()
       notifyOk()
+      document.querySelector('#b3').style.display = "block"
+      document.querySelector('#gif3').style.display = "none"
+      document.querySelector('#bt3').disabled = false
+      document.querySelector('#bt3').style.background = '#6E07B2'
     })
     .catch((error) => {
       console.log('error', error)
       notifyNotOk()
+      document.querySelector('#b3').style.display = "block"
+      document.querySelector('#gif3').style.display = "none"
+      document.querySelector('#bt3').disabled = false
+      document.querySelector('#bt3').style.background = '#6E07B2'
     })
 }
 
