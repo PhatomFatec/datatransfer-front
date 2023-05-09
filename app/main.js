@@ -1,3 +1,7 @@
+var imported = document.createElement('script');
+imported.src = 'home.js';
+document.head.appendChild(imported); 
+
 let home = document.querySelector('.home')
 let history = document.querySelector('.history')
 let configuration = document.querySelector('.configuration')
@@ -6,54 +10,54 @@ let menuHistory = document.querySelector('.menu-history')
 let menuConfiguration = document.querySelector('.menu-configuration')
 let historyList = []
 
-function toConfig() {
-  let home = document.querySelector('.home')
-  let history = document.querySelector('.history')
-  let configuration = document.querySelector('.configuration')
-  let menuHome = document.querySelector('.menu-home')
-  let menuHistory = document.querySelector('.menu-history')
-  let menuConfiguration = document.querySelector('.menu-configuration')
+// function toConfig() {
+//   let home = document.querySelector('.home')
+//   let history = document.querySelector('.history')
+//   let configuration = document.querySelector('.configuration')
+//   let menuHome = document.querySelector('.menu-home')
+//   let menuHistory = document.querySelector('.menu-history')
+//   let menuConfiguration = document.querySelector('.menu-configuration')
 
-  home.style.display = 'none'
-  history.style.display = 'none'
-  configuration.style.display = 'flex'
-  menuHome.classList.remove('active')
-  menuHistory.classList.remove('active')
-  menuConfiguration.classList.add('active')
-}
+//   home.style.display = 'none'
+//   history.style.display = 'none'
+//   configuration.style.display = 'flex'
+//   menuHome.classList.remove('active')
+//   menuHistory.classList.remove('active')
+//   menuConfiguration.classList.add('active')
+// }
 
-function toHome() {
-  let home = document.querySelector('.home')
-  let history = document.querySelector('.history')
-  let configuration = document.querySelector('.configuration')
-  let menuHome = document.querySelector('.menu-home')
-  let menuHistory = document.querySelector('.menu-history')
-  let menuConfiguration = document.querySelector('.menu-configuration')
+// function toHome() {
+//   let home = document.querySelector('.home')
+//   let history = document.querySelector('.history')
+//   let configuration = document.querySelector('.configuration')
+//   let menuHome = document.querySelector('.menu-home')
+//   let menuHistory = document.querySelector('.menu-history')
+//   let menuConfiguration = document.querySelector('.menu-configuration')
   
-  home.style.display = 'flex'
-  history.style.display = 'none'
-  configuration.style.display = 'none'
-  menuHome.classList.add('active')
-  menuHistory.classList.remove('active')
-  menuConfiguration.classList.remove('active')
-}
+//   home.style.display = 'flex'
+//   history.style.display = 'none'
+//   configuration.style.display = 'none'
+//   menuHome.classList.add('active')
+//   menuHistory.classList.remove('active')
+//   menuConfiguration.classList.remove('active')
+// }
 
-function toHistory() {
-  let home = document.querySelector('.home')
-  let history = document.querySelector('.history')
-  let configuration = document.querySelector('.configuration')
-  let menuHome = document.querySelector('.menu-home')
-  let menuHistory = document.querySelector('.menu-history')
-  let menuConfiguration = document.querySelector('.menu-configuration')
+// function toHistory() {
+//   let home = document.querySelector('.home')
+//   let history = document.querySelector('.history')
+//   let configuration = document.querySelector('.configuration')
+//   let menuHome = document.querySelector('.menu-home')
+//   let menuHistory = document.querySelector('.menu-history')
+//   let menuConfiguration = document.querySelector('.menu-configuration')
 
-  home.style.display = 'none'
-  history.style.display = 'flex'
-  configuration.style.display = 'none'
-  menuHome.classList.remove('active')
-  menuHistory.classList.add('active')
-  menuConfiguration.classList.remove('active')
-  getHistory()
-}
+//   home.style.display = 'none'
+//   history.style.display = 'flex'
+//   configuration.style.display = 'none'
+//   menuHome.classList.remove('active')
+//   menuHistory.classList.add('active')
+//   menuConfiguration.classList.remove('active')
+//   getHistory()
+// }
 
 function sendCredentials() {
   let client_id = document.querySelector('#client_id').value
@@ -62,6 +66,10 @@ function sendCredentials() {
   let redirect_uris = document.querySelector('#redirect_uris').value
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
+  document.querySelector('#b1').style.display = "none"
+  document.querySelector('#gif1').style.display = "block"
+  document.querySelector('#bt1').disabled = true
+  document.querySelector('#bt1').style.background = 'gray'
 
   var raw = JSON.stringify({
     client_id: client_id,
@@ -81,10 +89,18 @@ function sendCredentials() {
     .then((response) => {
       response.text()
       notifyOk()
+      document.querySelector('#b1').style.display = "block"
+      document.querySelector('#gif1').style.display = "none"
+      document.querySelector('#bt1').disabled = false
+      document.querySelector('#bt1').style.background = '#6E07B2'
     })
     .catch((error) => {
       console.log('error', error)
       notifyNotOk()
+      document.querySelector('#b1').style.display = "block"
+      document.querySelector('#gif1').style.display = "none"
+      document.querySelector('#bt1').disabled = false
+      document.querySelector('#bt1').style.background = '#6E07B2'
     })
 
   document.querySelector('#client_id').value = ''
@@ -124,6 +140,11 @@ function notifyNotOk() {
 }
 
 function sendFile() {
+  document.querySelector('#b3').style.display = "none"
+  document.querySelector('#gif3').style.display = "block"
+  document.querySelector('#bt3').disabled = true
+  document.querySelector('#bt3').style.background = 'gray'
+
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
 
@@ -138,10 +159,18 @@ function sendFile() {
     .then((response) => {
       response.text()
       notifyOk()
+      document.querySelector('#b3').style.display = "block"
+      document.querySelector('#gif3').style.display = "none"
+      document.querySelector('#bt3').disabled = false
+      document.querySelector('#bt3').style.background = '#6E07B2'
     })
     .catch((error) => {
       console.log('error', error)
       notifyNotOk()
+      document.querySelector('#b3').style.display = "block"
+      document.querySelector('#gif3').style.display = "none"
+      document.querySelector('#bt3').disabled = false
+      document.querySelector('#bt3').style.background = '#6E07B2'
     })
 }
 
@@ -188,24 +217,24 @@ window.onload = function onload() {
   });
 }
 
-function getHistory() {
-  var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
+// function getHistory() {
+//   var requestOptions = {
+//     method: 'GET',
+//     redirect: 'follow'
+//   };
   
-  fetch("http://localhost:8081/history", requestOptions)
-    .then(response => response.text())
-    .then(result => {
-      historyList = JSON.parse(result)
-      // console.log(historyList)
-      let tabela = document.querySelector('table')
-      tabela.innerHTML = '<tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr>'
-      historyList.forEach(e => {
-        tabela.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
-      })
-    })
-    .catch(error => console.log('error', error));
-}
+//   fetch("http://localhost:8081/history", requestOptions)
+//     .then(response => response.text())
+//     .then(result => {
+//       historyList = JSON.parse(result)
+//       // console.log(historyList)
+//       let tabela = document.querySelector('table')
+//       tabela.innerHTML = '<tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr>'
+//       historyList.forEach(e => {
+//         tabela.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
+//       })
+//     })
+//     .catch(error => console.log('error', error));
+// }
 
 module.exports = { toConfig, toHome, toHistory, notifyOk };
