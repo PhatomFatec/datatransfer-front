@@ -40,9 +40,9 @@ configurationPage = `
     <div class="half">
         <div class="file-input-container">
         <input type="file" id="file-input" multiple>
-        <label for="file-input" class="file-input-label">
+        <label for="file-input" class="file-input-label" id="input">
             <i class="fas fa-cloud-upload-alt"></i>
-            <span class="text-input">Arraste e solte os arquivos aqui ou clique para selecionar</span>
+            <span id="text-input" class="text-input">Arraste e solte os arquivos aqui ou clique para selecionar</span>
         </label>
         <div id="file-list"></div>
         <button id="bt3" onclick="sendFile()"><p id="b3">Enviar</p><img id="gif3" src="../assets/loading.gif"></button>
@@ -61,6 +61,7 @@ function toHome() {
 function toConfig() {
     currentPage.innerHTML = configurationPage
     activeMenu('config');
+    changeInput();
 }
 function toHistory() {
     currentPage.innerHTML = historyPage
@@ -95,22 +96,31 @@ function activeMenu(menu) {
 
 function getHistory() {
     var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
+        method: 'GET',
+        redirect: 'follow'
     };
-    
+
     fetch("http://localhost:8081/history", requestOptions)
-      .then(response => response.text())
-      .then(result => {
-        historyList = JSON.parse(result)
-        // console.log(historyList)
-        let tabela = document.querySelector('table')
-        tabela.innerHTML = '<tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr>'
-        historyList.forEach(e => {
-          tabela.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
+        .then(response => response.text())
+        .then(result => {
+            historyList = JSON.parse(result)
+            // console.log(historyList)
+            let tabela = document.querySelector('table')
+            tabela.innerHTML = '<tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr>'
+            historyList.forEach(e => {
+                tabela.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
+            })
         })
-      })
-      .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error));
+}
+
+function changeInput(){
+    let inputArea = document.querySelector('#file-input')
+    let textInput = document.querySelector('#text-input')
+    inputArea.addEventListener('change', function(){
+      textInput.innerHTML = inputArea.files[0].name
+      textInput.style.color = '#388a09'
+    })
   }
 
 window.onload = toHome();
