@@ -163,6 +163,8 @@ function sendFile() {
       document.querySelector('#gif3').style.display = "none"
       document.querySelector('#bt3').disabled = false
       document.querySelector('#bt3').style.background = '#6E07B2'
+      document.querySelector('text-input').innerHTML = 'Arraste e solte os arquivos aqui ou clique para selecionar'
+      document.querySelector('text-input').style.color = '#aaa'
     })
     .catch((error) => {
       console.log('error', error)
@@ -236,5 +238,7 @@ window.onload = function onload() {
 //     })
 //     .catch(error => console.log('error', error));
 // }
+
+
 
 module.exports = { toConfig, toHome, toHistory, notifyOk };
