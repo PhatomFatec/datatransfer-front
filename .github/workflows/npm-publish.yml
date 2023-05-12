@@ -3,7 +3,8 @@ name: Testes do front-end usando selenium
 on:
   workflow_dispatch:
   push: # gatilho para executar o fluxo quando houver um push para o repositório
-    branches: [ $default-branch ]
+    branches: [ $default-branch, feature/mid-22 ]
+    
 
 jobs:
   test:
