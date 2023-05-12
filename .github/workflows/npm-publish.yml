@@ -18,4 +18,4 @@ jobs:
     - name: Install chrome # executa os testes usando o comando 'npm run test'
       run: npm install -g chromedriver
     - name: Run Tests # executa os testes usando o comando 'npm run test'
-      run: selenium-side-runner midall.side
+      run: selenium-side-runner ./midall.side
