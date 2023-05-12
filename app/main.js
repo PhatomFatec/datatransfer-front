@@ -144,6 +144,14 @@ function sendFile() {
   document.querySelector('#gif3').style.display = "block"
   document.querySelector('#bt3').disabled = true
   document.querySelector('#bt3').style.background = 'gray'
+  const fluxo = document.querySelector('#check-fluxo')
+  let endpoint
+  if (fluxo.checked){
+    endpoint = 'upload'
+  }
+  else{
+    endpoint = 'upload/aws'
+  }
 
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
@@ -152,7 +160,7 @@ function sendFile() {
   var data = new FormData()
   data.append('file', input.files[0])
   data.append('user', 'hubot')
-  fetch('http://localhost:8081/upload', {
+  fetch(`http://localhost:8081/${endpoint}`, {
     method: 'POST',
     body: data
   })

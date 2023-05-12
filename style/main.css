@@ -108,7 +108,8 @@ nav .active {
 .configuration .half .form {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  /* width: 45%; */
+  width: 100%;
 }
 
 .configuration .half .form input {
@@ -285,4 +286,42 @@ tr:nth-child(even) {
 button img {
   height: 20px;
   display: none;
+}
+
+.area-fluxo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  position: absolute;
+  right: calc(50% - 100px)
+}
+
+.area-fluxo input{
+  display: none;
+  position: absolute;
+}
+
+.area-fluxo img{
+  width: 50px;
+  position: absolute;
+  transition: 1s
+}
+
+.area-fluxo img#amazon{
+  right: 0px
+}
+
+.area-fluxo img#drive{
+  right:150px;
+}
+
+.area-fluxo svg{
+  cursor: pointer;
+  color: #6e07b2
+}
+
+.area-fluxo svg:hover{
+  stroke-width: 2.5px;
 }
