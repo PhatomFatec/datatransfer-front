@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest # ambiente de execução para o trabalho
+    runs-on: windows-latest # ambiente de execução para o trabalho
     
     steps:
     - uses: actions/checkout@v2 # usa a ação checkout para obter o código-fonte do repositório
