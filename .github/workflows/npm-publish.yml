@@ -1,0 +1,22 @@
+name: Testes do front-end usando selenium
+
+on:
+  workflow_dispatch:
+  push: # gatilho para executar o fluxo quando houver um push para o repositório
+    branches: [ $default-branch ]  
+  pull_request:
+    branches: [ main, develop]
+    
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # ambiente de execução para o trabalho
+    
+    steps:
+    - uses: actions/checkout@v2 # usa a ação checkout para obter o código-fonte do repositório
+    - name: Install Selenium # instala as dependências necessárias para executar os testes
+      run: npm install -g selenium-side-runner
+    - name: Install chrome # executa os testes usando o comando 'npm run test'
+      run: npm install -g chromedriver
+    - name: Run Tests # executa os testes usando o comando 'npm run test'
+      run: selenium-side-runner ./midall.side
