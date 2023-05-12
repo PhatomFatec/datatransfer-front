@@ -4,19 +4,15 @@ on:
   workflow_dispatch:
   push: # gatilho para executar o fluxo quando houver um push para o repositório
     branches: [ $default-branch ]  
-  pull_request:
-    branches: [ main, develop]
-    
 
 jobs:
   test:
-    runs-on: windows-latest # ambiente de execução para o trabalho
-    
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2 # usa a ação checkout para obter o código-fonte do repositório
+    - uses: actions/checkout@v2
     - name: Install Selenium # instala as dependências necessárias para executar os testes
       run: npm install -g selenium-side-runner
     - name: Install chrome # executa os testes usando o comando 'npm run test'
       run: npm install -g chromedriver
-    - name: Run Tests # executa os testes usando o comando 'npm run test'
-      run: selenium-side-runner ./midall.side
+    - name: Run Tests
+      run: npx selenium-side-runner --exit-code --headless --browser chrome ./midall.side
