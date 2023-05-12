@@ -4,8 +4,6 @@ on:
   workflow_dispatch:
   push: # gatilho para executar o fluxo quando houver um push para o repositório
     branches: [ $default-branch ]
-  pull_request:
-    branches: [ main, develop]
 
 jobs:
   test:
