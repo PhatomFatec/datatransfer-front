@@ -1,6 +1,6 @@
 var imported = document.createElement('script');
 imported.src = 'home.js';
-document.head.appendChild(imported); 
+document.head.appendChild(imported);
 
 let home = document.querySelector('.home')
 let history = document.querySelector('.history')
@@ -33,7 +33,7 @@ let historyList = []
 //   let menuHome = document.querySelector('.menu-home')
 //   let menuHistory = document.querySelector('.menu-history')
 //   let menuConfiguration = document.querySelector('.menu-configuration')
-  
+
 //   home.style.display = 'flex'
 //   history.style.display = 'none'
 //   configuration.style.display = 'none'
@@ -144,6 +144,14 @@ function sendFile() {
   document.querySelector('#gif3').style.display = "block"
   document.querySelector('#bt3').disabled = true
   document.querySelector('#bt3').style.background = 'gray'
+  const fluxo = document.querySelector('#check-fluxo')
+  let endpoint
+  if (fluxo.checked) {
+    endpoint = 'upload/aws'
+  }
+  else {
+    endpoint = 'upload'
+  }
 
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
@@ -152,7 +160,7 @@ function sendFile() {
   var data = new FormData()
   data.append('file', input.files[0])
   data.append('user', 'hubot')
-  fetch('http://localhost:8081/upload', {
+  fetch(`http://localhost:8081/${endpoint}`, {
     method: 'POST',
     body: data
   })
@@ -224,7 +232,7 @@ window.onload = function onload() {
 //     method: 'GET',
 //     redirect: 'follow'
 //   };
-  
+
 //   fetch("http://localhost:8081/history", requestOptions)
 //     .then(response => response.text())
 //     .then(result => {
