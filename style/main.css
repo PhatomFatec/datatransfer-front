@@ -140,6 +140,8 @@ button:not(:disabled):hover {
 }
 
 .message-container {
+  background: #fff;
+  z-index: 10;
   width: 312px;
   position: absolute;
   box-shadow: 0 1px 10px #0000001a, 0 2px 15px #0000000d;

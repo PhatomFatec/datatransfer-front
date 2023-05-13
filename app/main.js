@@ -1,6 +1,6 @@
 var imported = document.createElement('script');
 imported.src = 'home.js';
-document.head.appendChild(imported); 
+document.head.appendChild(imported);
 
 let home = document.querySelector('.home')
 let history = document.querySelector('.history')
@@ -33,7 +33,7 @@ let historyList = []
 //   let menuHome = document.querySelector('.menu-home')
 //   let menuHistory = document.querySelector('.menu-history')
 //   let menuConfiguration = document.querySelector('.menu-configuration')
-  
+
 //   home.style.display = 'flex'
 //   history.style.display = 'none'
 //   configuration.style.display = 'none'
@@ -146,11 +146,11 @@ function sendFile() {
   document.querySelector('#bt3').style.background = 'gray'
   const fluxo = document.querySelector('#check-fluxo')
   let endpoint
-  if (fluxo.checked){
-    endpoint = 'upload'
-  }
-  else{
+  if (fluxo.checked) {
     endpoint = 'upload/aws'
+  }
+  else {
+    endpoint = 'upload'
   }
 
   var myHeaders = new Headers()
@@ -232,7 +232,7 @@ window.onload = function onload() {
 //     method: 'GET',
 //     redirect: 'follow'
 //   };
-  
+
 //   fetch("http://localhost:8081/history", requestOptions)
 //     .then(response => response.text())
 //     .then(result => {
