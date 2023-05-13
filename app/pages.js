@@ -152,5 +152,5 @@ function changeInput() {
     })
 }
 
-// window.onload = toHome();
-window.onload = toConfig();
+window.onload = toHome();
+// window.onload = toConfig();

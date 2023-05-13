@@ -26,38 +26,37 @@ let historyList = []
 //   menuConfiguration.classList.add('active')
 // }
 
-// function toHome() {
-//   let home = document.querySelector('.home')
-//   let history = document.querySelector('.history')
-//   let configuration = document.querySelector('.configuration')
-//   let menuHome = document.querySelector('.menu-home')
-//   let menuHistory = document.querySelector('.menu-history')
-//   let menuConfiguration = document.querySelector('.menu-configuration')
+function toHome() {
+  let home = document.querySelector('.home')
+  let history = document.querySelector('.history')
+  let configuration = document.querySelector('.configuration')
+  let menuHome = document.querySelector('.menu-home')
+  let menuHistory = document.querySelector('.menu-history')
+  let menuConfiguration = document.querySelector('.menu-configuration')
 
-//   home.style.display = 'flex'
-//   history.style.display = 'none'
-//   configuration.style.display = 'none'
-//   menuHome.classList.add('active')
-//   menuHistory.classList.remove('active')
-//   menuConfiguration.classList.remove('active')
-// }
+  home.style.display = 'flex'
+  history.style.display = 'none'
+  configuration.style.display = 'none'
+  menuHome.classList.add('active')
+  menuHistory.classList.remove('active')
+  menuConfiguration.classList.remove('active')
+}
 
-// function toHistory() {
-//   let home = document.querySelector('.home')
-//   let history = document.querySelector('.history')
-//   let configuration = document.querySelector('.configuration')
-//   let menuHome = document.querySelector('.menu-home')
-//   let menuHistory = document.querySelector('.menu-history')
-//   let menuConfiguration = document.querySelector('.menu-configuration')
+function toHistory() {
+  let home = document.querySelector('.home')
+  let history = document.querySelector('.history')
+  let configuration = document.querySelector('.configuration')
+  let menuHome = document.querySelector('.menu-home')
+  let menuHistory = document.querySelector('.menu-history')
+  let menuConfiguration = document.querySelector('.menu-configuration')
 
-//   home.style.display = 'none'
-//   history.style.display = 'flex'
-//   configuration.style.display = 'none'
-//   menuHome.classList.remove('active')
-//   menuHistory.classList.add('active')
-//   menuConfiguration.classList.remove('active')
-//   getHistory()
-// }
+  home.style.display = 'none'
+  history.style.display = 'flex'
+  configuration.style.display = 'none'
+  menuHome.classList.remove('active')
+  menuHistory.classList.add('active')
+  menuConfiguration.classList.remove('active')
+}
 
 function sendCredentials() {
   let client_id = document.querySelector('#client_id').value
@@ -249,4 +248,4 @@ window.onload = function onload() {
 
 
 
-module.exports = { toConfig, toHome, toHistory, notifyOk };
+module.exports = { toHome, toHistory, notifyOk };
