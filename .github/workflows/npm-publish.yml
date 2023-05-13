@@ -17,4 +17,4 @@ jobs:
     - name: Install chrome # executa os testes usando o comando 'npm run test'
       run: npm install -g chromedriver
     - name: Run Tests
-      run: npx selenium-side-runner ./midall.side
+      run: npx selenium-side-runner -c "goog:chromeOptions.args=[disable-infobars, headless]" ./midall.side
