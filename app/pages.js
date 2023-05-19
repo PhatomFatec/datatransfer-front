@@ -11,6 +11,8 @@ homePage = `
 configurationPage = `
 <div class="configuration">
 
+<h1>Selecione o fluxo</h1>
+
 <div class="area-fluxo">
 
   <input id="check-fluxo" type="checkbox">
@@ -27,23 +29,7 @@ configurationPage = `
   <img id="drive" src="https://cdn-icons-png.flaticon.com/512/2913/2913963.png" alt="">
 
 </div>
-
-    <div class="half">
-    <h1>CREDENCIAIS</h1>
-    <div class="cred">
-            <div class="form">
-                <label>Client ID</label>
-                <input type="text" name="" id="client_id" placeholder="client_id">
-                <label>Client Secret</label>
-                <input type="text" name="" id="client_secret" placeholder="client_secret">
-                <label>Project ID</label>
-                <input type="text" name="" id="project_id" placeholder="project_id">
-                <label>Redirect URIS</label>
-                <input type="text" name="" id="redirect_uris" placeholder="redirect_uris">
-                <button id="bt1" onclick="sendCredentials()"><p id="b1">Gerar</p><img id="gif1" src="../assets/loading.gif"></button>
-            </div>
-        </div>
-    </div>
+    <h1>Envie o arquivo</h1>
     <div class="half">
         <div class="file-input-container">
         <input type="file" id="file-input" multiple>
@@ -58,98 +44,144 @@ configurationPage = `
 </div>
 `;
 
+credentialsPage = `
+<div class="credentials">
+  <div class="form-cred">
+    <div class="cred">
+      <div class="form">
+        <label>Client ID</label>
+        <input type="text" name="" id="client_id" placeholder="client_id">
+        <label>Client Secret</label>
+        <input type="text" name="" id="client_secret" placeholder="client_secret">
+        <label>Project ID</label>
+        <input type="text" name="" id="project_id" placeholder="project_id">
+        <label>Redirect URIS</label>
+        <input type="text" name="" id="redirect_uris" placeholder="redirect_uris">
+      </div>
+    </div>
+      <div class="cred">
+        <div class="form">
+          <label>Access Key</label>
+          <input type="text" name="" id="accessKey" placeholder="accessKey">
+          <label>Secret Key</label>
+          <input type="text" name="" id="secretKey" placeholder="secretKey">
+          <label>Region</label>
+          <input type="text" name="" id="region" placeholder="region">
+          <label>Bucket Name</label>
+          <input type="text" name="" id="bucketName" placeholder="bucketName">
+        </div>
+    </div>
+  </div>
+  <button id="bt1" onclick="sendCredentials()"><p id="b1">Gerar</p><img id="gif1" src="../assets/loading.gif"></button>
+</div>
+`;
+
 // History page
 historyPage = `<div class="history"><table></table></div>`;
 
 function toHome() {
-    currentPage.innerHTML = homePage
-    activeMenu('home');
+  currentPage.innerHTML = homePage
+  activeMenu('home');
 }
 function toConfig() {
-    currentPage.innerHTML = configurationPage
-    activeMenu('config');
-    changeInput();
-    setFluxo()
+  currentPage.innerHTML = configurationPage
+  activeMenu('config');
+  changeInput();
+  setFluxo()
 }
 function toHistory() {
-    currentPage.innerHTML = historyPage
-    activeMenu('history');
-    getHistory();
+  currentPage.innerHTML = historyPage
+  activeMenu('history');
+  getHistory();
+}
+function toCred() {
+  currentPage.innerHTML = credentialsPage
+  activeMenu('cred');
 }
 
 function setFluxo() {
-    let switchFluxo = document.querySelector('#switch-fluxo')
-    let checkFluxo = document.querySelector('#check-fluxo')
-    let amazon = document.querySelector('#amazon')
-    let drive = document.querySelector('#drive')
+  let switchFluxo = document.querySelector('#switch-fluxo')
+  let checkFluxo = document.querySelector('#check-fluxo')
+  let amazon = document.querySelector('#amazon')
+  let drive = document.querySelector('#drive')
 
 
-    switchFluxo.addEventListener('click', function () {
-        if (checkFluxo.checked) {
-            checkFluxo.checked = false
-            drive.style.right = '150px'
-            amazon.style.right = '0px'
-        }
-        else {
-            checkFluxo.checked = true
-            drive.style.right = '0px'
-            amazon.style.right = '150px'
-        }
-    })
+  switchFluxo.addEventListener('click', function () {
+    if (checkFluxo.checked) {
+      checkFluxo.checked = false
+      drive.style.right = '150px'
+      amazon.style.right = '0px'
+    }
+    else {
+      checkFluxo.checked = true
+      drive.style.right = '0px'
+      amazon.style.right = '150px'
+    }
+  })
 }
 
 function activeMenu(menu) {
-    let menuHome = document.querySelector('.menu-home')
-    let menuHistory = document.querySelector('.menu-history')
-    let menuConfiguration = document.querySelector('.menu-configuration')
-    switch (menu) {
-        case 'home':
-            menuHome.classList.add('active');
-            menuHistory.classList.remove('active');
-            menuConfiguration.classList.remove('active');
-            break;
-        case 'history':
-            menuHome.classList.remove('active');
-            menuHistory.classList.add('active');
-            menuConfiguration.classList.remove('active');
-            break;
-        case 'config':
-            menuHome.classList.remove('active');
-            menuHistory.classList.remove('active');
-            menuConfiguration.classList.add('active');
-            break;
-        default:
-            break;
-    }
+  let menuHome = document.querySelector('.menu-home')
+  let menuHistory = document.querySelector('.menu-history')
+  let menuConfiguration = document.querySelector('.menu-configuration')
+  let menuCredential = document.querySelector('.menu-credential')
+  switch (menu) {
+    case 'home':
+      menuHome.classList.add('active');
+      menuHistory.classList.remove('active');
+      menuConfiguration.classList.remove('active');
+      menuCredential.classList.remove('active');
+      break;
+    case 'history':
+      menuHome.classList.remove('active');
+      menuHistory.classList.add('active');
+      menuConfiguration.classList.remove('active');
+      menuCredential.classList.remove('active');
+      break;
+    case 'config':
+      menuHome.classList.remove('active');
+      menuHistory.classList.remove('active');
+      menuConfiguration.classList.add('active');
+      menuCredential.classList.remove('active');
+      break;
+    case 'cred':
+      menuHome.classList.remove('active');
+      menuHistory.classList.remove('active');
+      menuConfiguration.classList.remove('active');
+      menuCredential.classList.add('active');
+      break;
+    default:
+      break;
+  }
 }
 
 function getHistory() {
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
 
-    fetch("http://localhost:8081/history", requestOptions)
-        .then(response => response.text())
-        .then(result => {
-            historyList = JSON.parse(result)
-            // console.log(historyList)
-            let tabela = document.querySelector('table')
-            tabela.innerHTML = '<tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr>'
-            historyList.forEach(e => {
-                tabela.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
-            })
-        })
-        .catch(error => console.log('error', error));
+  fetch("http://localhost:8081/history", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      historyList = JSON.parse(result)
+      // console.log(historyList)
+      let tabela = document.querySelector('table')
+      tabela.innerHTML = '<tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr>'
+      historyList.forEach(e => {
+        tabela.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
+      })
+    })
+    .catch(error => console.log('error', error));
 }
 
 function changeInput() {
-    let inputArea = document.querySelector('#file-input')
-    let textInput = document.querySelector('#text-input')
-    inputArea.addEventListener('change', function () {
-        textInput.innerHTML = inputArea.files[0].name
-        textInput.style.color = '#388a09'
-    })
+  let inputArea = document.querySelector('#file-input')
+  let textInput = document.querySelector('#text-input')
+  inputArea.addEventListener('change', function () {
+    textInput.innerHTML = inputArea.files[0].name
+    textInput.style.color = '#388a09'
+  })
 }
 
 window.onload = toHome();
