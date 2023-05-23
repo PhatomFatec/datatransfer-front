@@ -29,6 +29,8 @@ nav p {
   font-weight: 700;
   color: #fff;
   cursor: pointer;
+  margin-bottom: 0px !important;
+  line-height: normal !important;
 }
 
 nav .active {
@@ -78,7 +80,8 @@ nav .active {
   text-align: center;
   font-weight: bold;
 }
-.configuration h1:nth-child(1){
+
+.configuration h1:nth-child(1) {
   margin-bottom: 100px;
 }
 
@@ -296,7 +299,7 @@ button img {
   display: none;
 }
 
-.area-fluxo{
+.area-fluxo {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -307,47 +310,48 @@ button img {
   top: 158px;
 }
 
-.area-fluxo input{
+.area-fluxo input {
   display: none;
   position: absolute;
 }
 
-.area-fluxo img{
+.area-fluxo img {
   width: 50px;
   position: absolute;
   transition: 1s
 }
 
-.area-fluxo img#amazon{
+.area-fluxo img#amazon {
   right: 0px
 }
 
-.area-fluxo img#drive{
-  right:150px;
+.area-fluxo img#drive {
+  right: 150px;
 }
 
-.area-fluxo svg{
+.area-fluxo svg {
   cursor: pointer;
   color: #6e07b2
 }
 
-.area-fluxo svg:hover{
+.area-fluxo svg:hover {
   stroke-width: 2.5px;
 }
 
-.form-cred{
+.form-cred {
   display: flex;
   justify-content: space-around;
-  
+
 }
-.credentials{
+
+.credentials {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 35px);
   justify-content: center;
 }
 
-.credentials button{
+.credentials button {
   width: 300px;
   margin: 50px auto 0 auto;
 }
