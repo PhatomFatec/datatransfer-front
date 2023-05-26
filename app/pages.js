@@ -77,7 +77,11 @@ credentialsPage = `
 `;
 
 // History page
-historyPage = `<div class="history"><table></table></div>`;
+historyPage = `
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+<div class="history"><table id="historyTable"><thead><tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+`;
 
 function toHome() {
   currentPage.innerHTML = homePage
@@ -93,6 +97,10 @@ function toHistory() {
   currentPage.innerHTML = historyPage
   activeMenu('history');
   getHistory();
+  setTimeout(() => {
+    console.log('teste')
+    $('#historyTable').DataTable();
+  }, 1000)
 }
 function toCred() {
   currentPage.innerHTML = credentialsPage
@@ -167,9 +175,11 @@ function getHistory() {
       historyList = JSON.parse(result)
       // console.log(historyList)
       let tabela = document.querySelector('table')
-      tabela.innerHTML = '<tr><th>Arquivo</th><th>Tempo (s)</th><th>Tamanho (Kb)</th><th>Data</th><th>Status</th></tr>'
+      let tabelaHead = document.querySelector('thead')
+      let tabelaBody = document.querySelector('tbody')
+      
       historyList.forEach(e => {
-        tabela.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
+        tabelaBody.innerHTML += `<tr><td>${e.nome_arquivo}</td><td>${e.tempo}</td><td>${e.tamanho}</td><td>${e.data_envio}</td><td>${e.status}</td></tr>`
       })
     })
     .catch(error => console.log('error', error));
