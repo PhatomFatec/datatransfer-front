@@ -42,6 +42,16 @@ configurationPage = `
         </div>
     </div>
 </div>
+<div class="tempo-envio">
+  <h3>Tempo de envio</h3>
+  <select name="" id="tempoDeEnvio">
+    <option value="900000">15 min</option>
+    <option value="1800000">30 min</option>
+    <option value="3600000">1h</option>
+    <option value="1">Instantâneo</option>
+  </select>
+  <button class="definir" id="definir" onclick="mandaTempo()">Definir</button>
+</div>
 `;
 
 credentialsPage = `
@@ -72,7 +82,10 @@ credentialsPage = `
         </div>
     </div>
   </div>
+  <div style="display: flex;">
   <button id="bt1" onclick="sendCredentials()"><p id="b1">Gerar</p><img id="gif1" src="../assets/loading.gif"></button>
+  <button id="bt2" onclick="mandaCredencial2()"><p id="b2">Gerar</p><img id="gif2" src="../assets/loading.gif"></button>
+  </div>
 </div>
 `;
 
