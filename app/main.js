@@ -65,6 +65,7 @@ function sendCredentials() {
   let redirect_uris = document.querySelector('#redirect_uris').value
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('Access-Control-Allow-Origin', '*')
   document.querySelector('#b1').style.display = "none"
   document.querySelector('#gif1').style.display = "block"
   document.querySelector('#bt1').disabled = true
@@ -84,7 +85,7 @@ function sendCredentials() {
     redirect: 'follow'
   }
 
-  fetch('https://localhost:8081/credentials', requestOptions)
+  fetch('http://localhost:8081/credentials', requestOptions)
     .then((response) => {
       response.text()
       notifyOk()
@@ -282,6 +283,7 @@ function mandaCredencial2 (){
   let bucketName = document.querySelector('#bucketName').value
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('Access-Control-Allow-Origin', '*')
   document.querySelector('#b2').style.display = "none"
   document.querySelector('#gif2').style.display = "block"
   document.querySelector('#bt2').disabled = true
@@ -301,7 +303,7 @@ function mandaCredencial2 (){
     redirect: 'follow'
   }
 
-  fetch('https://localhost:8081/credentials/aws', requestOptions)
+  fetch('http://localhost:8081/credentials/aws', requestOptions)
     .then((response) => {
       response.text()
       notifyOk()
