@@ -72,12 +72,19 @@ credentialsPage = `
       <div class="cred">
         <div class="form">
           <label>Access Key</label>
+
           <input type="text" name="" id="accessKey" placeholder="accessKey">
+          
           <label>Secret Key</label>
+          
           <input type="text" name="" id="secretKey" placeholder="secretKey">
+          
           <label>Region</label>
+          
           <input type="text" name="" id="region" placeholder="region">
+          
           <label>Bucket Name</label>
+          
           <input type="text" name="" id="bucketName" placeholder="bucketName">
         </div>
     </div>
