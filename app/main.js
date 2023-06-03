@@ -84,7 +84,7 @@ function sendCredentials() {
     redirect: 'follow'
   }
 
-  fetch('http://localhost:8081/credentials', requestOptions)
+  fetch('https://localhost:8081/credentials', requestOptions)
     .then((response) => {
       response.text()
       notifyOk()
@@ -301,7 +301,7 @@ function mandaCredencial2 (){
     redirect: 'follow'
   }
 
-  fetch('http://localhost:8081/credentials/aws', requestOptions)
+  fetch('https://localhost:8081/credentials/aws', requestOptions)
     .then((response) => {
       response.text()
       notifyOk()
