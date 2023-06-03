@@ -71,14 +71,21 @@ credentialsPage = `
     </div>
       <div class="cred">
         <div class="form">
-          <label>Client ID</label>
-          <input type="text" name="" id="client_id" placeholder="client_id">
-          <label>Client Secret</label>
-          <input type="text" name="" id="client_secret" placeholder="client_secret">
-          <label>Project ID</label>
-          <input type="text" name="" id="project_id" placeholder="project_id">
-          <label>Redirect URIS</label>
-          <input type="text" name="" id="redirect_uris" placeholder="redirect_uris">
+          <label>Access Key</label>
+
+          <input type="text" name="" id="accessKey" placeholder="accessKey">
+          
+          <label>Secret Key</label>
+          
+          <input type="text" name="" id="secretKey" placeholder="secretKey">
+          
+          <label>Region</label>
+          
+          <input type="text" name="" id="region" placeholder="region">
+          
+          <label>Bucket Name</label>
+          
+          <input type="text" name="" id="bucketName" placeholder="bucketName">
         </div>
     </div>
   </div>
