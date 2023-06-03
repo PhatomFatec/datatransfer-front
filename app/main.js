@@ -290,6 +290,7 @@ function mandaCredencial2 (){
   document.querySelector('#bt2').style.background = 'gray'
 
   var raw = JSON.stringify({
+    id: 1,
     accessKey: accessKey,
     secretKey: secretKey,
     region: region,
