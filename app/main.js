@@ -72,7 +72,6 @@ function sendCredentials() {
   document.querySelector('#bt1').style.background = 'gray'
 
   var raw = JSON.stringify({
-    id: 1,
     client_id: client_id,
     client_secret: client_secret,
     project_id: project_id,
