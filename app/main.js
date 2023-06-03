@@ -83,7 +83,7 @@ function sendCredentials() {
     headers: myHeaders,
     body: raw,
     redirect: 'follow',
-    mode: 'cors'
+    mode: 'no-cors'
   }
 
   fetch('http://localhost:8081/credentials', requestOptions)
@@ -302,7 +302,7 @@ function mandaCredencial2 (){
     headers: myHeaders,
     body: raw,
     redirect: 'follow',
-    mode: 'cors'
+    mode: 'no-cors'
   }
 
   fetch('http://localhost:8081/credentials/aws', requestOptions)
