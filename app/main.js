@@ -65,6 +65,7 @@ function sendCredentials() {
   let redirect_uris = document.querySelector('#redirect_uris').value
   var myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('Access-Control-Allow-Origin', '*')
   document.querySelector('#b1').style.display = "none"
   document.querySelector('#gif1').style.display = "block"
   document.querySelector('#bt1').disabled = true
@@ -245,6 +246,87 @@ window.onload = function onload() {
 //     })
 //     .catch(error => console.log('error', error));
 // }
+
+
+function mandaTempo(){
+  var myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+  var tempo = document.querySelector('#tempoDeEnvio').value
+
+  var raw = JSON.stringify({
+    id: 1,
+    time: tempo
+  })
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  }
+
+  fetch('http://localhost:8081/alterar', requestOptions)
+    .then((response) => {
+      response.text()
+      notifyOk()
+    })
+    .catch((error) => {
+      console.log('error', error)
+      notifyNotOk()
+    })
+}
+
+function mandaCredencial2 (){
+  let accessKey = document.querySelector('#accessKey').value
+  let secretKey = document.querySelector('#secretKey').value
+  let region = document.querySelector('#region').value
+  let bucketName = document.querySelector('#bucketName').value
+  var myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+  myHeaders.append('Access-Control-Allow-Origin', '*')
+  document.querySelector('#b2').style.display = "none"
+  document.querySelector('#gif2').style.display = "block"
+  document.querySelector('#bt2').disabled = true
+  document.querySelector('#bt2').style.background = 'gray'
+
+  var raw = JSON.stringify({
+    id: 1,
+    accessKey: accessKey,
+    secretKey: secretKey,
+    region: region,
+    bucketName: bucketName,
+  })
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  }
+
+  fetch('http://localhost:8081/credentials/aws', requestOptions)
+    .then((response) => {
+      response.text()
+      notifyOk()
+      document.querySelector('#b2').style.display = "block"
+      document.querySelector('#gif2').style.display = "none"
+      document.querySelector('#bt2').disabled = false
+      document.querySelector('#bt2').style.background = '#6E07B2'
+    })
+    .catch((error) => {
+      console.log('error', error)
+      notifyNotOk()
+      document.querySelector('#b2').style.display = "block"
+      document.querySelector('#gif2').style.display = "none"
+      document.querySelector('#bt2').disabled = false
+      document.querySelector('#bt2').style.background = '#6E07B2'
+    })
+
+  document.querySelector('#accessKey').value = ''
+  document.querySelector('#secretKey').value = ''
+  document.querySelector('#region').value = ''
+  document.querySelector('#bucketName').value = ''
+}
 
 
 
